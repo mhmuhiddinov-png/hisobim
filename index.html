@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f6b63">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Hisobim — hisoblar va xarajatlar</title>
+<style>
+:root{--bg:#eef2f1;--panel:#fbfdfc;--ink:#14232b;--mute:#5b6c72;--line:#d3dddb;--accent:#0f6b63;--on:#fff;--neg:#b5334a;--pos:#1f7a4d;color-scheme:light;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1a1e;--panel:#162328;--ink:#e6efee;--mute:#93a6ab;--line:#274047;--accent:#4fc2b5;--on:#0b1417;--neg:#ee7d92;--pos:#6fd29b;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-variant-numeric:tabular-nums}
+.wrap{max-width:1080px;margin:0 auto;padding:20px 16px 48px}
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+h1{font-size:26px;font-weight:600;margin:0}h2{font-size:16px;font-weight:600;margin:0 0 12px}
+.sub,.meta{color:var(--mute)}.sub{margin:2px 0 0}.meta{font-size:13px}
+.grid{display:grid;grid-template-columns:340px 1fr;gap:16px}
+@media (max-width:820px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:16px}
+.total{font-size:30px;font-weight:600}
+.acc{display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid var(--line)}
+label{display:block;font-size:13px;color:var(--mute);margin:10px 0 3px}
+input,select,button{font:inherit;color:var(--ink)}
+input,select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:6px;background:var(--bg)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.seg{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.seg button{border:0;background:transparent;padding:8px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--on);font-weight:500}
+.btn{margin-top:14px;width:100%;padding:10px;border:0;border-radius:6px;background:var(--accent);color:var(--on);font-weight:500;cursor:pointer}
+.ghost{background:none;border:1px solid var(--line);padding:6px 10px;border-radius:6px;cursor:pointer;font-size:13px}
+.split{display:flex;height:22px;border-radius:5px;overflow:hidden;background:var(--line);margin:4px 0 8px}
+.split i{display:block;height:100%}
+.g{padding:10px 0;border-top:1px solid var(--line)}
+.gh{display:flex;justify-content:space-between;gap:8px;font-weight:500}
+.gh span:first-child{display:flex;align-items:center;gap:8px}
+.dot{width:10px;height:10px;border-radius:50%}
+.bar{height:6px;background:var(--line);border-radius:3px;margin:6px 0 4px;overflow:hidden}.bar b{display:block;height:100%}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}.tools select{width:auto}
+.tx{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:9px 0;border-top:1px solid var(--line)}
+.neg{color:var(--neg)}.pos{color:var(--pos)}
+.x{background:none;border:0;color:var(--mute);cursor:pointer;font-size:20px;line-height:1}
+.empty{color:var(--mute)}
+details summary{cursor:pointer;font-weight:600}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+code{font-size:12px;word-break:break-all}
+[hidden]{display:none!important}
+.grow{display:grid;grid-template-columns:auto 1fr auto auto;gap:8px;align-items:center;margin:6px 0}.grow input,.grow select{padding:6px 8px}header select{width:auto}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div><h1>Hisobim</h1><p class="sub" data-i="sub"></p></div>
+  <div class="btns" style="margin:0"><select id="lang" aria-label="Til / Язык"><option value="uz">Oʻzbekcha</option><option value="ru">Русский</option></select><button class="ghost" id="inst" hidden data-i="inst"></button></div>
+</header>
+<div class="grid">
+<div>
+  <section class="panel">
+    <h2 data-i="acc"></h2>
+    <div class="total" id="total"></div>
+    <p class="meta" style="margin:0 0 8px" data-i="totNote"></p>
+    <div id="accounts"></div>
+    <div class="row2" style="margin-top:8px">
+      <div><label for="an" data-i="newAcc"></label><input id="an" data-p="accPh"></div>
+      <div><label for="ao" data-i="open"></label><input id="ao" type="number" inputmode="decimal" placeholder="0"></div>
+    </div>
+    <button class="ghost" id="addAcc" style="margin-top:10px" data-i="addAcc"></button>
+  </section>
+  <section class="panel">
+    <h2 data-i="newTx"></h2>
+    <div class="seg" role="group"><button type="button" id="tE" aria-pressed="true" data-i="exp"></button><button type="button" id="tI" aria-pressed="false" data-i="inc"></button></div>
+    <label for="amt" data-i="amt"></label><input id="amt" type="number" inputmode="decimal" min="0" placeholder="0">
+    <div class="row2">
+      <div><label for="acc" data-i="account"></label><select id="acc"></select></div>
+      <div><label for="grp" data-i="group"></label><select id="grp"></select></div>
+    </div>
+    <div class="row2">
+      <div><label for="dt" data-i="date"></label><input id="dt" type="date"></div>
+      <div><label for="nt" data-i="note"></label><input id="nt" data-p="opt"></div>
+    </div>
+    <button class="btn" id="save" data-i="save"></button>
+  </section>
+  <section class="panel">
+    <details><summary data-i="gEdit"></summary>
+      <div id="gl"></div>
+      <div class="grow" style="grid-template-columns:auto 1fr auto"><select id="gt"><option value="expense" data-i="exp"></option><option value="income" data-i="inc"></option></select><input id="gn" data-p="gName"><button class="ghost" id="gadd" data-i="gAdd"></button></div>
+    </details>
+  </section>
+  <section class="panel">
+    <details id="od">
+      <summary data-i="od"></summary>
+      <p class="meta" data-i="odNote"></p>
+      <label for="cid">Client ID</label><input id="cid" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" autocomplete="off">
+      <label>Redirect URI (Azure)</label><code id="ruri"></code>
+      <div class="btns"><button class="ghost" id="odIn" data-i="conn"></button><button class="ghost" id="odSync" data-i="syncNow"></button><button class="ghost" id="odOut" data-i="disc"></button></div>
+      <p class="meta" id="odSt" role="status"></p>
+    </details>
+  </section>
+</div>
+<div>
+  <section class="panel">
+    <div class="tools"><h2 style="margin:0;flex:1" data-i="sum"></h2>
+      <label for="per" style="margin:0" data-i="per"></label>
+      <select id="per"><option value="month" data-i="pm"></option><option value="30" data-i="p30"></option><option value="all" data-i="pa"></option></select></div>
+    <div id="summary"></div>
+  </section>
+  <section class="panel"><h2 data-i="recs"></h2><div id="list"></div></section>
+</div>
+</div>
+</div>
+<script>
+(function(){
+var KEY="hisobim-v1",CK="hisobim-cid",TK="hisobim-tok",VK="hisobim-ver",LK="hisobim-lang";
+var L={
+sub:["Hisoblar va xarajatlar. Maʼlumotlar shu qurilmada saqlanadi, xohlasangiz OneDrive bilan sinxronlanadi.","Счета и расходы. Данные хранятся на этом устройстве и по желанию синхронизируются через OneDrive."],
+inst:["Ilovani oʻrnatish","Установить приложение"],acc:["Hisoblar","Счета"],totNote:["Barcha hisoblar boʻyicha jami (soʻm)","Итого по всем счетам (сум)"],
+newAcc:["Yangi hisob","Новый счёт"],accPh:["Masalan: Humo karta","Например: карта Humo"],open:["Boshlangʻich qoldiq","Начальный остаток"],addAcc:["Hisob qoʻshish","Добавить счёт"],
+newTx:["Yangi yozuv","Новая запись"],exp:["Xarajat","Расход"],inc:["Daromad","Доход"],amt:["Summa (soʻm)","Сумма (сум)"],account:["Hisob","Счёт"],group:["Guruh","Группа"],
+date:["Sana","Дата"],note:["Izoh","Комментарий"],opt:["Ixtiyoriy","Необязательно"],save:["Yozuvni saqlash","Сохранить запись"],
+gEdit:["Guruhlarni tahrirlash","Редактировать группы"],gName:["Yangi guruh nomi","Название новой группы"],gAdd:["Guruh qoʻshish","Добавить группу"],gone:["Oʻchirilgan guruh","Удалённая группа"],
+od:["OneDrive bilan sinxronlash","Синхронизация с OneDrive"],odNote:["Bepul Microsoft hisobi kifoya. Maʼlumotlar OneDrive’dagi ilovaning oʻz papkasida saqlanadi. Sozlash — README faylida.","Достаточно бесплатной учётной записи Microsoft. Данные хранятся в папке приложения в OneDrive. Настройка — в файле README."],
+conn:["Ulash","Подключить"],syncNow:["Hozir sinxronlash","Синхронизировать"],disc:["Uzish","Отключить"],
+sum:["Guruhlar xulosasi","Сводка по группам"],per:["Davr","Период"],pm:["Shu oy","Этот месяц"],p30:["Oxirgi 30 kun","Последние 30 дней"],pa:["Butun davr","Всё время"],recs:["Yozuvlar","Записи"],
+noSum:["Bu davrda xarajat yoʻq. Xulosani koʻrish uchun yozuv qoʻshing.","В этом периоде расходов нет. Добавьте запись, чтобы увидеть сводку."],
+noRec:["Hali yozuv yoʻq. Birinchi yozuvni shakldan qoʻshing.","Записей пока нет. Добавьте первую через форму."],
+gone2:["Oʻchirilgan hisob","Удалённый счёт"],del:["Oʻchirish","Удалить"],
+ins:[function(a){return "<strong style='color:var(--ink)'>"+a.g+"</strong> — eng katta guruh, xarajatning "+a.p+"% qismi. Xarajat: "+a.t+", daromad: "+a.i+", farq: "+a.n},function(a){return "<strong style='color:var(--ink)'>"+a.g+"</strong> — крупнейшая группа, "+a.p+"% расходов. Расходы: "+a.t+", доходы: "+a.i+", разница: "+a.n}],
+det:[function(a){return "Xarajatning "+a.p+"%, "+a.c+" ta yozuv, oʻrtacha "+a.a+", eng kattasi "+a.m},function(a){return a.p+"% расходов, записей: "+a.c+", в среднем "+a.a+", максимум "+a.m}],
+s_off:["Ulanmagan","Не подключено"],s_on:["Ulangan","Подключено"],s_cid:["Avval Client ID kiriting.","Сначала введите Client ID."],s_offl:["Oflayn: internet paydo boʻlganda sinxronlanadi","Нет сети: синхронизация при появлении интернета"],
+s_ing:["Sinxronlanmoqda…","Синхронизация…"],s_re:["Qayta kirish kerak: “Ulash” tugmasini bosing.","Нужен повторный вход: нажмите «Подключить»."],s_ok:["Sinxronlandi: ","Синхронизировано: "],s_err:["Xato: ","Ошибка: "],
+s_can:["Kirish bekor qilindi: ","Вход отменён: "],s_dis:["Uzildi (maʼlumotlar qurilmada qoldi)","Отключено (данные остались на устройстве)"],
+g_food:["Oziq-ovqat","Продукты"],g_transport:["Transport","Транспорт"],g_housing:["Uy-joy","Жильё"],g_utilities:["Kommunal","Коммуналка"],g_health:["Sogʻliq","Здоровье"],g_fun:["Koʻngilochar","Развлечения"],g_other:["Boshqa","Другое"],g_salary:["Maosh","Зарплата"],g_oinc:["Boshqa daromad","Другой доход"],cash:["Naqd pul","Наличные"]
+};
+var lang=lsGet(LK)||((navigator.language||"").slice(0,2)==="ru"?"ru":"uz");
+function tr(k,a){var v=L[k][lang==="ru"?1:0];return typeof v==="function"?v(a):v}
+var DEF=[["food","expense","#c2701f"],["transport","expense","#2f6fb3"],["housing","expense","#6b4fa3"],["utilities","expense","#0f8a8a"],["health","expense","#b5334a"],["fun","expense","#c0517f"],["other","expense","#6f7d82"],["salary","income","#1f7a4d"],["oinc","income","#5d9b3a"]];
+var PAL=["#8a5a2b","#3b7f9e","#9a4f9a","#5f8f3a","#c9a227","#d1603d","#4a6fa5","#7a7a2e"];
+var type="expense",S,timer,lastSt=["s_off",""],AUTH="https://login.microsoftonline.com/consumers/oauth2/v2.0/",GR="https://graph.microsoft.com/v1.0/me/drive/special/approot:/hisobim.json:/content";
+function $(i){return document.getElementById(i)}
+function iso(d){var o=d.getTimezoneOffset()*6e4;return new Date(d-o).toISOString().slice(0,10)}
+function ago(n){var d=new Date();d.setDate(d.getDate()-n);return iso(d)}
+function fmt(v){return Math.round(v).toLocaleString("en-US").replace(/,/g," ")}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function lsGet(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function lsSet(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function ensure(x){if(!x.del)x.del={};if(!x.accounts)x.accounts=[];if(!x.tx)x.tx=[];if(!x.groups)x.groups=DEF.map(function(d){return {id:d[0],type:d[1],color:d[2],name:null,u:1}});return x}
+function load(){try{var r=lsGet(KEY);if(r)return ensure(JSON.parse(r))}catch(e){}return ensure({accounts:[{id:"c0",name:tr("cash"),open:0,u:1}]})}
+function persist(){S.u=Date.now();lsSet(KEY,JSON.stringify(S));queueSync()}
+function gf(id){for(var i=0;i<S.groups.length;i++)if(S.groups[i].id===id)return S.groups[i]}
+function gn(id){var g=gf(id);return g?(g.name||(L["g_"+id]?tr("g_"+id):id)):tr("gone")}
+function gc(id){var g=gf(id);return g?g.color:"#888"}
+function accName(id){for(var i=0;i<S.accounts.length;i++)if(S.accounts[i].id===id)return S.accounts[i].name;return tr("gone2")}
+
+function merge(a,b){
+  var del={},k;[a.del||{},b.del||{}].forEach(function(d){for(k in d)del[k]=Math.max(del[k]||0,d[k])});
+  function mix(x,y){var m={};(x||[]).concat(y||[]).forEach(function(e){var c=m[e.id];if(!c||(e.u||0)>(c.u||0))m[e.id]=e});
+    return Object.keys(m).map(function(i){return m[i]}).filter(function(e){return !(del[e.id]>=(e.u||0))})}
+  return ensure({accounts:mix(a.accounts,b.accounts),tx:mix(a.tx,b.tx),groups:mix(a.groups,b.groups),del:del,u:Date.now()});
+}
+
+function inPeriod(d){var p=$("per").value;if(p==="all")return true;if(p==="30")return d>=ago(30);return d.slice(0,7)===iso(new Date()).slice(0,7)}
+function renderAccounts(){
+  var tot=0,h="";
+  S.accounts.forEach(function(a){var b=a.open;S.tx.forEach(function(x){if(x.acc===a.id)b+=x.type==="income"?x.amt:-x.amt});tot+=b;
+    h+='<div class="acc"><span>'+esc(a.name)+'</span><span class="'+(b<0?"neg":"")+'">'+fmt(b)+'</span></div>'});
+  $("total").textContent=fmt(tot);$("accounts").innerHTML=h;
+  var cur=$("acc").value;$("acc").innerHTML=S.accounts.map(function(a){return '<option value="'+a.id+'">'+esc(a.name)+'</option>'}).join("");if(cur)$("acc").value=cur;
+}
+function renderGroups(){
+  var cur=$("grp").value;
+  $("grp").innerHTML=S.groups.filter(function(g){return g.type===type}).map(function(g){return '<option value="'+g.id+'">'+esc(gn(g.id))+'</option>'}).join("");
+  if(cur)$("grp").value=cur;
+  $("gl").innerHTML=S.groups.map(function(g){var n=S.groups.filter(function(x){return x.type===g.type}).length;
+    return '<div class="grow"><i class="dot" style="background:'+g.color+'"></i><input data-gid="'+g.id+'" value="'+esc(gn(g.id))+'" aria-label="'+esc(gn(g.id))+'"><span class="meta">'+tr(g.type==="expense"?"exp":"inc")+'</span><button class="x" data-gdel="'+g.id+'" aria-label="'+tr("del")+'"'+(n<2?' disabled':'')+'>×</button></div>'}).join("");
+}
+function renderSummary(){
+  var by={},tot=0,inc=0;
+  S.tx.forEach(function(x){if(!inPeriod(x.date))return;if(x.type==="income"){inc+=x.amt;return}
+    var g=by[x.grp]||(by[x.grp]={n:0,sum:0,max:0});g.n++;g.sum+=x.amt;g.max=Math.max(g.max,x.amt);tot+=x.amt});
+  var names=Object.keys(by).sort(function(a,b){return by[b].sum-by[a].sum});
+  if(!names.length){$("summary").innerHTML='<p class="empty">'+tr("noSum")+'</p>';return}
+  var top=names[0],net=inc-tot;
+  var h='<p class="meta" style="font-size:15px;margin:0 0 12px">'+tr("ins",{g:esc(gn(top)),p:Math.round(by[top].sum/tot*100),t:fmt(tot),i:fmt(inc),n:'<span class="'+(net<0?"neg":"pos")+'">'+(net<0?"−":"+")+fmt(Math.abs(net))+'</span>'})+'.</p>';
+  h+='<div class="split">'+names.map(function(k){return '<i style="width:'+by[k].sum/tot*100+'%;background:'+gc(k)+'" title="'+esc(gn(k))+'"></i>'}).join("")+'</div>';
+  names.forEach(function(k){var g=by[k],p=g.sum/tot*100,c=gc(k);
+    h+='<div class="g"><div class="gh"><span><i class="dot" style="background:'+c+'"></i>'+esc(gn(k))+'</span><span>'+fmt(g.sum)+'</span></div><div class="bar"><b style="width:'+p+'%;background:'+c+'"></b></div><div class="meta">'+tr("det",{p:p.toFixed(1),c:g.n,a:fmt(g.sum/g.n),m:fmt(g.max)})+'</div></div>'});
+  $("summary").innerHTML=h;
+}
+function renderList(){
+  var l=S.tx.slice().sort(function(a,b){return a.date<b.date?1:a.date>b.date?-1:0});
+  if(!l.length){$("list").innerHTML='<p class="empty">'+tr("noRec")+'</p>';return}
+  $("list").innerHTML=l.map(function(x){var n=x.type==="expense";
+    return '<div class="tx"><div><div>'+esc(gn(x.grp))+(x.note?' <span class="meta">— '+esc(x.note)+'</span>':'')+'</div><div class="meta">'+x.date+', '+esc(accName(x.acc))+'</div></div><div class="'+(n?"neg":"pos")+'">'+(n?"−":"+")+fmt(x.amt)+'</div><button class="x" data-id="'+x.id+'" aria-label="'+tr("del")+'">×</button></div>'}).join("");
+}
+function all(){renderAccounts();renderGroups();renderSummary();renderList()}
+function setType(v){type=v;$("tE").setAttribute("aria-pressed",v==="expense");$("tI").setAttribute("aria-pressed",v==="income");renderGroups()}
+function st(k,x){lastSt=[k,x||""];$("odSt").textContent=tr(k)+(x||"")}
+function applyLang(){
+  document.documentElement.lang=lang;$("lang").value=lang;
+  [].forEach.call(document.querySelectorAll("[data-i]"),function(e){e.textContent=tr(e.getAttribute("data-i"))});
+  [].forEach.call(document.querySelectorAll("[data-p]"),function(e){e.placeholder=tr(e.getAttribute("data-p"))});
+  document.title="Hisobim";st(lastSt[0],lastSt[1]);all();
+}
+
+function b64(buf){return btoa(String.fromCharCode.apply(null,new Uint8Array(buf))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"")}
+function ruri(){return location.origin+location.pathname}
+async function login(){
+  var cid=$("cid").value.trim();if(!cid){st("s_cid");$("cid").focus();return}
+  lsSet(CK,cid);
+  var v=b64(crypto.getRandomValues(new Uint8Array(32))),c=b64(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(v)));
+  lsSet(VK,v);
+  location.href=AUTH+"authorize?client_id="+encodeURIComponent(cid)+"&response_type=code&redirect_uri="+encodeURIComponent(ruri())+"&response_mode=query&scope="+encodeURIComponent("Files.ReadWrite.AppFolder offline_access")+"&code_challenge="+c+"&code_challenge_method=S256";
+}
+async function token(body){
+  var r=await fetch(AUTH+"token",{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(body)});
+  var j=await r.json();if(!r.ok)throw new Error(j.error_description||"HTTP "+r.status);
+  lsSet(TK,JSON.stringify({at:j.access_token,rt:j.refresh_token||(JSON.parse(lsGet(TK)||"{}").rt),exp:Date.now()+j.expires_in*1000}));
+}
+async function getTok(){
+  var t=JSON.parse(lsGet(TK)||"null");if(!t)return null;
+  if(t.exp>Date.now()+60000)return t.at;
+  try{await token({client_id:lsGet(CK),grant_type:"refresh_token",refresh_token:t.rt,scope:"Files.ReadWrite.AppFolder offline_access"});return JSON.parse(lsGet(TK)).at}catch(e){return null}
+}
+async function sync(){
+  if(!lsGet(TK)){st("s_off");return}
+  if(!navigator.onLine){st("s_offl");return}
+  try{
+    st("s_ing");var at=await getTok();if(!at){st("s_re");return}
+    var h={Authorization:"Bearer "+at},r=await fetch(GR,{headers:h}),rem=null;
+    if(r.ok)rem=await r.json();else if(r.status!==404)throw new Error("OneDrive HTTP "+r.status);
+    if(rem)S=merge(S,rem);
+    var p=await fetch(GR,{method:"PUT",headers:{Authorization:"Bearer "+at,"Content-Type":"application/json"},body:JSON.stringify(S)});
+    if(!p.ok)throw new Error("OneDrive HTTP "+p.status);
+    lsSet(KEY,JSON.stringify(S));all();
+    st("s_ok",new Date().toTimeString().slice(0,5));
+  }catch(e){st("s_err",e.message)}
+}
+function queueSync(){if(!lsGet(TK))return;clearTimeout(timer);timer=setTimeout(sync,3000)}
+async function handleRedirect(){
+  var q=new URLSearchParams(location.search),code=q.get("code");
+  if(q.get("error")){st("s_can",q.get("error_description")||q.get("error"));history.replaceState(null,"",ruri());return}
+  if(!code)return;
+  history.replaceState(null,"",ruri());
+  try{await token({client_id:lsGet(CK),grant_type:"authorization_code",code:code,redirect_uri:ruri(),code_verifier:lsGet(VK)});$("od").open=true;await sync()}catch(e){st("s_err",e.message)}
+}
+
+$("lang").onchange=function(){lang=$("lang").value;lsSet(LK,lang);applyLang()};
+$("tE").onclick=function(){setType("expense")};$("tI").onclick=function(){setType("income")};$("per").onchange=renderSummary;
+$("save").onclick=function(){var a=parseFloat($("amt").value);if(!(a>0)){$("amt").focus();return}
+  S.tx.push({id:"t"+Date.now()+Math.floor(Math.random()*1e3),type:type,amt:a,acc:$("acc").value,grp:$("grp").value,date:$("dt").value||iso(new Date()),note:$("nt").value.trim(),u:Date.now()});
+  $("amt").value="";$("nt").value="";persist();all()};
+$("addAcc").onclick=function(){var n=$("an").value.trim();if(!n){$("an").focus();return}
+  S.accounts.push({id:"a"+Date.now(),name:n,open:parseFloat($("ao").value)||0,u:Date.now()});$("an").value="";$("ao").value="";persist();all()};
+$("list").onclick=function(e){var id=e.target.getAttribute&&e.target.getAttribute("data-id");if(!id)return;
+  S.tx=S.tx.filter(function(x){return x.id!==id});S.del[id]=Date.now();persist();all()};
+$("gadd").onclick=function(){var n=$("gn").value.trim();if(!n){$("gn").focus();return}
+  S.groups.push({id:"g"+Date.now(),type:$("gt").value,name:n,color:PAL[S.groups.length%PAL.length],u:Date.now()});$("gn").value="";persist();all()};
+$("gl").onchange=function(e){var id=e.target.getAttribute("data-gid");if(!id)return;var g=gf(id),v=e.target.value.trim();
+  g.name=v&&v!==gn(id)?v:g.name;g.u=Date.now();persist();all()};
+$("gl").onclick=function(e){var id=e.target.getAttribute&&e.target.getAttribute("data-gdel");if(!id)return;
+  S.groups=S.groups.filter(function(g){return g.id!==id});S.del[id]=Date.now();persist();all()};
+$("odIn").onclick=login;$("odSync").onclick=sync;
+$("odOut").onclick=function(){try{localStorage.removeItem(TK)}catch(e){}st("s_dis")};
+var dp;window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();dp=e;$("inst").hidden=false});
+$("inst").onclick=function(){if(dp){dp.prompt();dp=null;$("inst").hidden=true}};
+window.addEventListener("online",queueSync);
+if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(function(){});
+
+S=load();
+$("dt").value=iso(new Date());$("cid").value=lsGet(CK)||"";$("ruri").textContent=ruri();
+if(lsGet(TK))lastSt=["s_on",""];
+applyLang();
+handleRedirect().then(function(){if(lsGet(TK)&&!location.search)sync()});
+})();
+</script>
+</body>
+</html>
