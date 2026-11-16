@@ -3,7 +3,13 @@
 Ilova litsenziya kalitisiz, mutlaqo bepul ishlaydi. Server yoki toʻlov kerak emas.
 
 ## Boshqaruv paneli
-Chap menyudan **Boshqaruv paneli**, **Hisoblar**, **Taqvim**, **Tranzaksiyalar** va **Sozlamalar** boʻlimlariga oʻting. Yuqoridagi davr tanlagichda shu oy, oxirgi 30 kun, barcha vaqt yoki oʻzingiz belgilagan sanalarni tanlash mumkin. Tranzaksiyani **Tranzaksiyalar** boʻlimida qoʻshing.
+Chap menyudan **Boshqaruv paneli**, **Hisoblar**, **Taqvim**, **Tranzaksiyalar**, **Byudjetlar**, **Hisobotlar** va **Sozlamalar** boʻlimlariga oʻting. Yuqoridagi davr tanlagichda shu oy, oxirgi 30 kun, barcha vaqt yoki oʻzingiz belgilagan sanalarni tanlash mumkin. Tranzaksiyani **Tranzaksiyalar** boʻlimida qoʻshing.
+
+**Byudjetlar** boʻlimida har bir xarajat guruhiga oylik limit va jamgʻarma maqsadini kiriting. Ilova shu oy sarflangan summa, limitdan qolgan summa va jamgʻarish ulushini koʻrsatadi. Tavsiya etilgan odat: har bir yozuvni oʻsha kuni kiriting, limitlarni oldingi oyga qarab belgilang va haftada bir marta tekshiring.
+
+**Hisobotlar** boʻlimida sana oraligʻi, hisob, tur va guruhni tanlang. **Excel (.xlsx) yuklab olish** tanlangan yozuvlar va xulosani haqiqiy Excel fayliga saqlaydi. **PDF sifatida saqlash** qurilmaning chop etish oynasini ochadi; unda “PDF sifatida saqlash”ni tanlang.
+
+**Sozlamalar → Zaxira nusxa** orqali JSON zaxira faylini yuklab oling yoki boshqa qurilmadagi nusxani birlashtiring. Faylda shaxsiy moliyaviy maʼlumotlar boʻladi; uni xavfsiz saqlang.
 
 Tilni chap pastdagi tanlagich orqali almashtiring. Dastlabki naqd pul hisobi va standart guruhlar tarjima qilinadi. Oʻzingiz yozgan hisob, guruh va izoh nomlari qanday yozilgan boʻlsa, shunday qoladi; hisob nomlarini **Hisoblar** boʻlimida, guruh nomlarini **Sozlamalar**da tahrirlang.
 
@@ -25,6 +31,8 @@ Agar alohida `.apk` fayl kerak boʻlsa: **pwabuilder.com** (bepul) → manzilni 
 4. Yaratilgach **Application (client) ID** ni nusxalang.
 5. Ilovada: **OneDrive bilan sinxronlash** → Client ID’ni kiriting → **Ulash** → Microsoft hisobingiz bilan kiring va ruxsat bering.
 6. Boshqa qurilmada (telefon/kompyuter) ham shu Client ID’ni kiriting va ulang.
+
+Har ikkala qurilmada ham bir xil Hisobim manzilini, Client IDʼni va Microsoft hisobini ishlating. Ilova ochilganda, oldingi oynaga qaytganda, har 60 soniyada va oʻzgarishdan keyin sinxronlashni tekshiradi. **Sozlamalar**dagi holat yoki chap paneldagi yozuvni kuzating.
 
 Maʼlumotlar OneDrive’dagi `Apps/…/hisobim.json` faylida saqlanadi (faqat ilovaning oʻz papkasi). Oʻzgarishlar avtomatik yuboriladi; ikki qurilmada qilingan oʻzgarishlar birlashtiriladi (yangisi ustun).
 Eslatma: Microsoft SPA uchun kirish tokenini ~24 soatga beradi, shuning uchun gohida “Ulash” tugmasini qayta bosish kerak boʻladi.
