@@ -2,6 +2,11 @@
 
 Ilova litsenziya kalitisiz, mutlaqo bepul ishlaydi. Server yoki toʻlov kerak emas.
 
+## Boshqaruv paneli
+Chap menyudan **Boshqaruv paneli**, **Hisoblar**, **Taqvim**, **Tranzaksiyalar** va **Sozlamalar** boʻlimlariga oʻting. Yuqoridagi davr tanlagichda shu oy, oxirgi 30 kun, barcha vaqt yoki oʻzingiz belgilagan sanalarni tanlash mumkin. Tranzaksiyani **Tranzaksiyalar** boʻlimida qoʻshing.
+
+Tilni chap pastdagi tanlagich orqali almashtiring. Dastlabki naqd pul hisobi va standart guruhlar tarjima qilinadi. Oʻzingiz yozgan hisob, guruh va izoh nomlari qanday yozilgan boʻlsa, shunday qoladi; hisob nomlarini **Hisoblar** boʻlimida, guruh nomlarini **Sozlamalar**da tahrirlang.
+
 ## 1. Internetga joylash (bir marta, bepul)
 Papkadagi barcha fayllarni HTTPS orqali joylang. Eng oson yoʻl: **Cloudflare Pages → Create → Direct Upload**, papkani (yoki ZIP’ni) yuklang. Natijada `https://nomi.pages.dev/` kabi manzil olasiz.
 (GitHub Pages ham ishlaydi.) Ilova PWA boʻlgani uchun HTTPS shart.
@@ -25,4 +30,4 @@ Maʼlumotlar OneDrive’dagi `Apps/…/hisobim.json` faylida saqlanadi (faqat il
 Eslatma: Microsoft SPA uchun kirish tokenini ~24 soatga beradi, shuning uchun gohida “Ulash” tugmasini qayta bosish kerak boʻladi.
 
 ## Til va guruhlar
-Tilni yuqoridagi tanlagich (Oʻzbekcha / Русский) bilan almashtiring. Guruhlarni “Guruhlarni tahrirlash” boʻlimida nomini oʻzgartirish, oʻchirish va yangi guruh qoʻshish mumkin; guruhlar ham OneDrive orqali sinxronlanadi. Standart guruhlar tilga qarab tarjima qilinadi, oʻzingiz yozgan nomlar esa oʻzgarmaydi.
+Tilni chap pastdagi tanlagich (Oʻzbekcha / Русский) bilan almashtiring. Guruhlarni “Sozlamalar” boʻlimida nomini oʻzgartirish, oʻchirish va yangi guruh qoʻshish mumkin; guruhlar ham OneDrive orqali sinxronlanadi. Standart guruhlar tilga qarab tarjima qilinadi, oʻzingiz yozgan nomlar esa oʻzgarmaydi.
