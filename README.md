@@ -1,4 +1,4 @@
-# Hisobim — oʻrnatish va OneDrive sinxronlash
+﻿# Hisobim — oʻrnatish va OneDrive sinxronlash
 
 Ilova litsenziya kalitisiz, mutlaqo bepul ishlaydi. Server yoki toʻlov kerak emas.
 
@@ -35,14 +35,9 @@ Chrome’da manzilni oching → ⋮ menyu → **“Ilovani oʻrnatish”**. Chro
 Agar alohida `.apk` fayl kerak boʻlsa: **pwabuilder.com** (bepul) → manzilni kiriting → Android → Download. Windows uchun `.msix` ham shu yerda.
 
 ## 4. OneDrive sinxronlash (bepul Microsoft hisobi)
-1. https://entra.microsoft.com (yoki portal.azure.com) → **App registrations → New registration**.
-2. Name: Hisobim. Supported account types: **Personal Microsoft accounts only** (yoki “… and personal”).
-3. Redirect URI: platforma **Single-page application (SPA)**, qiymati — ilovadagi “Redirect URI” (OneDrive boʻlimida koʻrinadi, masalan `https://nomi.pages.dev/index.html` yoki `https://nomi.pages.dev/`). Aynan bir xil boʻlishi kerak.
-4. Yaratilgach **Application (client) ID** ni nusxalang.
-5. Ilovada: **OneDrive bilan sinxronlash** → Client ID’ni kiriting → **Ulash** → Microsoft hisobingiz bilan kiring va ruxsat bering.
-6. Boshqa qurilmada (telefon/kompyuter) ham shu Client ID’ni kiriting va ulang.
+Saytda Microsoft ilovasi sozlangan boʻlsa, kompyuter va telefonda **Sozlamalar → OneDrive → Microsoft hisobiga kirish** tugmasini bosing. Ikkala qurilmada ham **bir xil Microsoft hisobiga** kiring. Elektron pochta manzili yoki foydalanuvchi nomini ilovaga alohida kiritish shart emas; Microsoft kirish oynasi hisobni tasdiqlaydi. Ilova ochilganda, oldingi oynaga qaytganda, har 60 soniyada va oʻzgarishdan keyin sinxronlashni tekshiradi. **Sozlamalar**dagi holat yoki chap paneldagi yozuvni kuzating.
 
-Har ikkala qurilmada ham bir xil Hisobim manzilini, Client IDʼni va Microsoft hisobini ishlating. Ilova ochilganda, oldingi oynaga qaytganda, har 60 soniyada va oʻzgarishdan keyin sinxronlashni tekshiradi. **Sozlamalar**dagi holat yoki chap paneldagi yozuvni kuzating.
+Agar sayt egasi Microsoft ilovasini hali sozlamagan boʻlsa, Entra katalogida bir martalik roʻyxatdan oʻtkazish kerak: **App registrations → New registration**, hisob turi **Personal Microsoft accounts only**, platforma **Single-page application (SPA)**, redirect URI `https://mhmuhiddinov-png.github.io/hisobim/`. Microsoft Graph uchun delegatsiya qilingan `Files.ReadWrite.AppFolder` ruxsatini qoʻshing. Yaratilgan **Application (client) ID** ni saytdagi `app-config.js` fayliga kiriting va saytni qayta joylang. Bu ID ommaviy; maxfiy kalit yaratish yoki saytda saqlash kerak emas. Shundan soʻng boshqa qurilmalarda ID kiritilmaydi.
 
 Maʼlumotlar OneDrive’dagi `Apps/…/hisobim.json` faylida saqlanadi (faqat ilovaning oʻz papkasi). Oʻzgarishlar avtomatik yuboriladi; ikki qurilmada qilingan oʻzgarishlar birlashtiriladi (yangisi ustun).
 Eslatma: Microsoft SPA uchun kirish tokenini ~24 soatga beradi, shuning uchun gohida “Ulash” tugmasini qayta bosish kerak boʻladi.
