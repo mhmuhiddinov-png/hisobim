@@ -3,7 +3,9 @@
 Ilova litsenziya kalitisiz, mutlaqo bepul ishlaydi. Server yoki toʻlov kerak emas.
 
 ## Boshqaruv paneli
-Chap menyudan **Boshqaruv paneli**, **Hisoblar**, **Taqvim**, **Tranzaksiyalar**, **Byudjetlar**, **Hisobotlar** va **Sozlamalar** boʻlimlariga oʻting. Yuqoridagi davr tanlagichda shu oy, oxirgi 30 kun, barcha vaqt yoki oʻzingiz belgilagan sanalarni tanlash mumkin. Tranzaksiyani **Tranzaksiyalar** boʻlimida qoʻshing.
+Chap menyudan **Boshqaruv paneli**, **Hisoblar**, **Taqvim**, **Tranzaksiyalar**, **Avtomatlashtirish**, **Byudjetlar**, **Hisobotlar** va **Sozlamalar** boʻlimlariga oʻting. Yuqoridagi davr tanlagichda shu oy, oxirgi 30 kun, barcha vaqt yoki oʻzingiz belgilagan sanalarni tanlash mumkin. Tranzaksiyani **Tranzaksiyalar** boʻlimida qoʻshing.
+
+**Avtomatlashtirish** boʻlimida bankdan olingan CSV faylni tanlang, sana, izoh va summa ustunlarini moslang, hisobni tanlang va yozuvlarni tekshiring. Ilova mumkin boʻlgan takrorlarni belgilaydi. Belgilangan yozuvlargina kiritiladi. “Guruh tanlash qoidalari” orqali izohdagi kalit soʻzga mos guruhni tavsiya qiling; ilova oldingi bir xil izohli yozuvlardan ham foydalanadi. “Takroriy toʻlov eslatmalari”da har hafta yoki oy qaytariladigan toʻlovni kiriting. Muddati kelganda uni tasdiqlang; shundan keyingina balans va hisobotga qoʻshiladi. CSV fayl qurilmaning oʻzida oʻqiladi. Ilova bank hisobingizga yoki SMS xabarlaringizga toʻgʻridan-toʻgʻri ulanmaydi.
 
 **Byudjetlar** boʻlimida har bir xarajat guruhiga oylik limit va jamgʻarma maqsadini kiriting. Ilova shu oy sarflangan summa, limitdan qolgan summa va jamgʻarish ulushini koʻrsatadi. Tavsiya etilgan odat: har bir yozuvni oʻsha kuni kiriting, limitlarni oldingi oyga qarab belgilang va haftada bir marta tekshiring.
 
