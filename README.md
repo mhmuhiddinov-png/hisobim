@@ -7,6 +7,8 @@ Chap menyudan **Boshqaruv paneli**, **Hisoblar**, **Taqvim**, **Tranzaksiyalar**
 
 **Avtomatlashtirish** boʻlimida bankdan olingan CSV faylni tanlang, sana, izoh va summa ustunlarini moslang, hisobni tanlang va yozuvlarni tekshiring. Ilova mumkin boʻlgan takrorlarni belgilaydi. Belgilangan yozuvlargina kiritiladi. “Guruh tanlash qoidalari” orqali izohdagi kalit soʻzga mos guruhni tavsiya qiling; ilova oldingi bir xil izohli yozuvlardan ham foydalanadi. “Takroriy toʻlov eslatmalari”da har hafta yoki oy qaytariladigan toʻlovni kiriting. Muddati kelganda uni tasdiqlang; shundan keyingina balans va hisobotga qoʻshiladi. CSV fayl qurilmaning oʻzida oʻqiladi. Ilova bank hisobingizga yoki SMS xabarlaringizga toʻgʻridan-toʻgʻri ulanmaydi.
 
+**Tranzaksiyalar** boʻlimida yozuvlar **Daromad** va **Xarajat** ustunlariga ajratilgan. Har bir ustunda tanlangan davr va hisob uchun jami summa koʻrsatiladi. Yozuv yonidagi qalam belgisini bosib turi, summasi, hisobi, guruhi, sanasi va izohini tahrirlang; **Oʻzgarishlarni saqlash** bilan tasdiqlang yoki **Bekor qilish** bilan chiqib keting.
+
 **Byudjetlar** boʻlimida har bir xarajat guruhiga oylik limit va jamgʻarma maqsadini kiriting. Ilova shu oy sarflangan summa, limitdan qolgan summa va jamgʻarish ulushini koʻrsatadi. Tavsiya etilgan odat: har bir yozuvni oʻsha kuni kiriting, limitlarni oldingi oyga qarab belgilang va haftada bir marta tekshiring.
 
 **Hisobotlar** boʻlimida sana oraligʻi, hisob, tur va guruhni tanlang. **Excel (.xlsx) yuklab olish** tanlangan yozuvlar va xulosani haqiqiy Excel fayliga saqlaydi. **PDF sifatida saqlash** qurilmaning chop etish oynasini ochadi; unda “PDF sifatida saqlash”ni tanlang.
