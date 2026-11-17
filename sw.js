@@ -1,4 +1,4 @@
-var C="hisobim-v14",F=["./?v=14","index.html","styles.css?v=14","app-config.js?v=14","app.js?v=14","exports.js?v=14","features.js?v=14","automation.js?v=14","visuals.js?v=14","privacy.js?v=14","manifest.webmanifest?v=14","icon-192.png","icon-512.png"];
+var C="hisobim-v15",F=["./?v=15","index.html","styles.css?v=15","app-config.js?v=15","app.js?v=15","exports.js?v=15","features.js?v=15","automation.js?v=15","visuals.js?v=15","privacy.js?v=15","manifest.webmanifest?v=15","icon-192.png","icon-512.png"];
 self.addEventListener("install",function(e){e.waitUntil(caches.open(C).then(function(c){return c.addAll(F)}));self.skipWaiting()});
 self.addEventListener("activate",function(e){e.waitUntil(caches.keys().then(function(k){return Promise.all(k.filter(function(x){return x!==C}).map(function(x){return caches.delete(x)}))}));self.clients.claim()});
 self.addEventListener("fetch",function(e){var u=new URL(e.request.url);if(e.request.method!=="GET"||u.origin!==location.origin)return;
