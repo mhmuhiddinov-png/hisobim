@@ -11,6 +11,10 @@ Chap menyudan **Boshqaruv paneli**, **Hisoblar**, **Taqvim**, **Tranzaksiyalar**
 
 **Hisobotlar** boʻlimida sana oraligʻi, hisob, tur va guruhni tanlang. **Excel (.xlsx) yuklab olish** tanlangan yozuvlar va xulosani haqiqiy Excel fayliga saqlaydi. **PDF sifatida saqlash** qurilmaning chop etish oynasini ochadi; unda “PDF sifatida saqlash”ni tanlang.
 
+Hisobotda guruhlar ulushi halqa diagrammada, davr boʻyicha xarajat yoki daromad ustunli diagrammada koʻrinadi. Guruh nomini bosing — hisobot shu guruhga filtrlanadi. Ustunni bosing — sana shu kun yoki oyga oʻtadi. Filtrlarni yuqoridan yana oʻzgartirish mumkin.
+
+**Hisoblar** va **Sozlamalar → Guruhlarni tahrirlash** boʻlimlarida har bir hisob va guruh uchun emoji belgisini tanlang. Belgilar barcha qurilmalarda OneDrive orqali maʼlumotlar bilan birga sinxronlanadi.
+
 **Sozlamalar → Zaxira nusxa** orqali JSON zaxira faylini yuklab oling yoki boshqa qurilmadagi nusxani birlashtiring. Faylda shaxsiy moliyaviy maʼlumotlar boʻladi; uni xavfsiz saqlang.
 
 Tilni chap pastdagi tanlagich orqali almashtiring. Dastlabki naqd pul hisobi va standart guruhlar tarjima qilinadi. Oʻzingiz yozgan hisob, guruh va izoh nomlari qanday yozilgan boʻlsa, shunday qoladi; hisob nomlarini **Hisoblar** boʻlimida, guruh nomlarini **Sozlamalar**da tahrirlang.
