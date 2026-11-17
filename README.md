@@ -44,3 +44,7 @@ Eslatma: Microsoft SPA uchun kirish tokenini ~24 soatga beradi, shuning uchun go
 
 ## Til va guruhlar
 Tilni chap pastdagi tanlagich (Oʻzbekcha / Русский) bilan almashtiring. Guruhlarni “Sozlamalar” boʻlimida nomini oʻzgartirish, oʻchirish va yangi guruh qoʻshish mumkin; guruhlar ham OneDrive orqali sinxronlanadi. Standart guruhlar tilga qarab tarjima qilinadi, oʻzingiz yozgan nomlar esa oʻzgarmaydi.
+
+## Interaktiv hisobotlar
+Hisobot kartalari va guruh qatorlarini bosing: jadval darhol filtrlanadi. Vaqt diagrammasidagi ustunlar sana oraligʻini tanlaydi. Diagramma kichik ekranga moslashadi va toʻliq qiymatni ustun nomidan koʻrish mumkin.
+
