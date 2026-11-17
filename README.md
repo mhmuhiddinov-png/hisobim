@@ -9,6 +9,8 @@ Chap menyudan **Boshqaruv paneli**, **Hisoblar**, **Taqvim**, **Tranzaksiyalar**
 
 **Tranzaksiyalar** boʻlimida yozuvlar **Daromad** va **Xarajat** ustunlariga ajratilgan. Har bir ustunda tanlangan davr va hisob uchun jami summa koʻrsatiladi. Yozuv yonidagi qalam belgisini bosib turi, summasi, hisobi, guruhi, sanasi va izohini tahrirlang; **Oʻzgarishlarni saqlash** bilan tasdiqlang yoki **Bekor qilish** bilan chiqib keting.
 
+Yuqori oʻngdagi **koʻz belgisi** qoldiq, daromad va xarajat summalarini ekranda yashiradi yoki koʻrsatadi. Tanlov shu qurilmada eslab qolinadi. Yozuv kiritish maydonlari ishlash uchun ochiq qoladi; PDF va Excel fayllari esa toʻliq summalarni saqlaydi.
+
 **Byudjetlar** boʻlimida har bir xarajat guruhiga oylik limit va jamgʻarma maqsadini kiriting. Ilova shu oy sarflangan summa, limitdan qolgan summa va jamgʻarish ulushini koʻrsatadi. Tavsiya etilgan odat: har bir yozuvni oʻsha kuni kiriting, limitlarni oldingi oyga qarab belgilang va haftada bir marta tekshiring.
 
 **Hisobotlar** boʻlimida sana oraligʻi, hisob, tur va guruhni tanlang. **Excel (.xlsx) yuklab olish** tanlangan yozuvlar va xulosani haqiqiy Excel fayliga saqlaydi. **PDF sifatida saqlash** qurilmaning chop etish oynasini ochadi; unda “PDF sifatida saqlash”ni tanlang.
